@@ -3,9 +3,9 @@
 
 site_name: Docs Template
 site_description: Documentation template with Python, C++, and C# support
-site_url: https://weiting1991.github.io/mkdocs-template/
-repo_url: https://github.com/WeiTing1991/mkdocs-template
-repo_name: WeiTing1991/mkdocs-template
+site_url: https://weiting1991.github.io/docs-template/
+repo_url: https://github.com/WeiTing1991/docs-template
+repo_name: WeiTing1991/docs-template
 docs_dir: docs
 site_dir: site
 

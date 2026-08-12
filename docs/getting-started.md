@@ -11,8 +11,8 @@
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/WeiTing1991/mkdocs-template.git
-cd mkdocs-template
+git clone https://github.com/WeiTing1991/docs-template.git
+cd docs-template
 uv sync
 ```
 
