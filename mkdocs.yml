@@ -1,3 +1,6 @@
+# MkDocs-compatible fallback config
+# Primary config is zensical.toml -- this file exists for backward compatibility
+
 site_name: Docs Template
 site_description: Documentation template with Python, C++, and C# support
 site_url: https://weiting1991.github.io/mkdocs-template/
@@ -38,56 +41,58 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
-    - content.code.copy
-    - content.code.select
-    - content.tabs.link
-    - navigation.footer
-    - navigation.indexes
-    - navigation.instant
-    - navigation.sections
-    - navigation.tabs
-    - navigation.top
-    - navigation.tracking
-    - search.highlight
+    - content.code.copy           # adds copy button to code blocks
+    - content.code.select         # allows selecting code in code blocks
+    - content.tabs.link           # links content tabs across the page
+    - navigation.footer           # adds prev/next links in the footer
+    - navigation.indexes          # allows section index pages
+    - navigation.instant          # SPA-style navigation
+    - navigation.sections         # renders top-level sections as groups in sidebar
+    - navigation.tabs             # renders top-level sections as tabs
+    - navigation.top              # adds back-to-top button
+    - navigation.tracking         # updates URL hash with active anchor
+    - search.highlight            # highlights search terms on the page
 
 plugins:
-  - search
+  - search                         # built-in full-text search
+  # mkdocstrings: auto-generates Python API docs from docstrings
   - mkdocstrings:
       handlers:
         python:
           paths:
-            - src/python
+            - src/python            # where to find Python source files
           options:
-            docstring_style: google
-            show_source: true
-            heading_level: 2
+            docstring_style: google # parse Google-style docstrings
+            show_source: true       # show source code in API docs
+            heading_level: 2        # start headings at h2
+  # mkdoxy: auto-generates C++/C# API docs from Doxygen comments
   - mkdoxy:
       projects:
         cpp_example:
-          src-dirs: src/cpp/
-          full-doc: true
+          src-dirs: src/cpp/        # C++ source directory for Doxygen
+          full-doc: true            # generate full documentation
         csharp_example:
-          src-dirs: src/csharp/
+          src-dirs: src/csharp/     # C# source directory for Doxygen
           full-doc: true
 
 markdown_extensions:
-  - admonition
-  - attr_list
-  - def_list
-  - md_in_html
-  - toc:
+  - admonition                      # callout boxes: note, warning, tip, etc.
+  - attr_list                       # add HTML attributes to markdown elements
+  - def_list                        # definition lists
+  - md_in_html                      # allows markdown inside HTML blocks
+  - toc:                            # table of contents with permalink anchors
       permalink: true
-  - pymdownx.highlight:
+  - pymdownx.highlight:             # syntax highlighting for code blocks
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.superfences:
+  - pymdownx.superfences:           # fenced code blocks + mermaid diagrams
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
+  - pymdownx.tabbed:                # tabbed content blocks
       alternate_style: true
       combine_header_slug: true
-  - pymdownx.inlinehilite
-  - pymdownx.details
+  - pymdownx.inlinehilite           # inline code syntax highlighting
+  - pymdownx.details                # collapsible content blocks

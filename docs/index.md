@@ -1,17 +1,22 @@
-# Welcome to MkDocs
+# Docs Template
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+A documentation template using [Zensical](https://zensical.org/) with support for Python, C++, and C# projects.
 
-## Commands
+## Language Sections
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+- [Python](python/index.md) -- Python documentation with auto-generated API reference via mkdocstrings
+- [C++](cpp/index.md) -- C++ documentation with auto-generated API reference via MkDoxy/Doxygen
+- [C#](csharp/index.md) -- C# documentation with auto-generated API reference via MkDoxy/Doxygen
 
-## Project layout
+## Features
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- Dark/light mode toggle
+- Code syntax highlighting for Python, C++, and C#
+- Tabbed content blocks
+- Auto-generated API documentation
+- Search
+- Navigation tabs
+
+## Getting Started
+
+See the [Getting Started](getting-started.md) guide for setup instructions.

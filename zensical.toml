@@ -24,22 +24,24 @@ nav = [
   ]},
 ]
 
+# -- Theme Configuration --
 [project.theme]
 language = "en"
 features = [
-  "content.code.copy",
-  "content.code.select",
-  "content.tabs.link",
-  "navigation.footer",
-  "navigation.indexes",
-  "navigation.instant",
-  "navigation.sections",
-  "navigation.tabs",
-  "navigation.top",
-  "navigation.tracking",
-  "search.highlight",
+  "content.code.copy",           # adds copy button to code blocks
+  "content.code.select",         # allows selecting code in code blocks
+  "content.tabs.link",           # links content tabs across the page
+  "navigation.footer",           # adds prev/next links in the footer
+  "navigation.indexes",          # allows section index pages (index.md in folders)
+  "navigation.instant",          # single-page app style navigation (no full reload)
+  "navigation.sections",         # renders top-level sections as groups in sidebar
+  "navigation.tabs",             # renders top-level sections as tabs in the header
+  "navigation.top",              # adds back-to-top button
+  "navigation.tracking",         # updates URL hash with active anchor
+  "search.highlight",            # highlights search terms on the page
 ]
 
+# three-way palette toggle: system preference, light, dark
 [[project.theme.palette]]
 media = "(prefers-color-scheme)"
 toggle.icon = "lucide/sun-moon"
@@ -61,50 +63,64 @@ accent = "indigo"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to system preference"
 
+# -- Plugins --
+
+# mkdocstrings: auto-generates Python API docs from docstrings
 [project.plugins.mkdocstrings.handlers.python]
-paths = ["src/python"]
+paths = ["src/python"]              # where to find Python source files
 
 [project.plugins.mkdocstrings.handlers.python.options]
-docstring_style = "google"
-show_source = true
-heading_level = 2
+docstring_style = "google"          # parse Google-style docstrings (Args, Returns, etc.)
+show_source = true                  # show source code in the API docs
+heading_level = 2                   # start auto-generated headings at h2
 
+# mkdoxy: auto-generates C++/C# API docs from Doxygen comments
 [project.plugins.mkdoxy]
 
 [project.plugins.mkdoxy.projects.cpp_example]
-src-dirs = "src/cpp/"
-full-doc = true
+src-dirs = "src/cpp/"               # C++ source directory for Doxygen to scan
+full-doc = true                     # generate full documentation (not just snippets)
 
 [project.plugins.mkdoxy.projects.csharp_example]
-src-dirs = "src/csharp/"
+src-dirs = "src/csharp/"            # C# source directory for Doxygen to scan
 full-doc = true
 
+# -- Markdown Extensions --
 [project.markdown_extensions]
-admonition = {}
-attr_list = {}
-def_list = {}
-md_in_html = {}
-toc = { permalink = true }
+admonition = {}                     # callout boxes: note, warning, tip, etc.
+attr_list = {}                      # add HTML attributes to markdown elements
+def_list = {}                       # definition lists (term : definition)
+md_in_html = {}                     # allows markdown inside HTML blocks
+toc = { permalink = true }          # table of contents with permalink anchors
+
+# syntax highlighting for code blocks
 pymdownx.highlight = {
-  anchor_linenums = true,
-  line_spans = "__span",
-  pygments_lang_class = true,
+  anchor_linenums = true,           # makes line numbers clickable anchors
+  line_spans = "__span",            # wraps each line in a span for targeting
+  pygments_lang_class = true,       # adds language class to code blocks
 }
+
+# fenced code blocks with custom renderers (e.g. mermaid diagrams)
 pymdownx.superfences = {
   custom_fences = [
     {
-      name = "mermaid",
+      name = "mermaid",             # enables ```mermaid blocks for diagrams
       class = "mermaid",
       format = "pymdownx.superfences.fence_code_format",
     },
   ],
 }
+
+# tabbed content blocks (e.g. show same example in different languages)
 pymdownx.tabbed = {
-  alternate_style = true,
-  combine_header_slug = true,
+  alternate_style = true,           # use the modern tab style
+  combine_header_slug = true,       # combine tab header into URL slug
 }
-pymdownx.inlinehilite = {}
-pymdownx.details = {}
+
+pymdownx.inlinehilite = {}          # inline code syntax highlighting: `#!python print()`
+pymdownx.details = {}               # collapsible content blocks (details/summary)
+
+# emoji support using Zensical's built-in icon set
 pymdownx.emoji = {
   emoji_generator = "zensical.extensions.emoji.to_svg",
   emoji_index = "zensical.extensions.emoji.twemoji",
