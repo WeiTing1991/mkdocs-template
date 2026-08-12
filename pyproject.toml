@@ -1,0 +1,13 @@
+[project]
+name = "mkdocs-template"
+version = "0.1.0"
+description = "Documentation template using Zensical with Python, C++, and C# support"
+requires-python = ">=3.12"
+dependencies = [
+    "zensical>=0.0.53",
+    "mkdocs>=1.6,<2",
+    "mkdocs-material>=9.7,<10",
+    "mkdocstrings[python]>=0.25",
+    "mkdoxy>=1.2",
+    "pymdown-extensions>=10.0",
+]
